@@ -5,7 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Vite;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SecurityHeaders
 {
@@ -17,6 +19,8 @@ class SecurityHeaders
         if (! (config('app.debug') && $response->getStatusCode() >= 500)) {
             $response->headers->set('Content-Security-Policy', $this->contentSecurityPolicy());
         }
+
+        $this->declareLength($response);
 
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-Frame-Options', 'DENY');
@@ -32,6 +36,22 @@ class SecurityHeaders
         }
 
         return $response;
+    }
+
+    /**
+     * Without a length, a proxy such as a tunnel waits for the connection to close and the page never finishes loading.
+     */
+    private function declareLength(Response $response): void
+    {
+        if ($response->headers->has('Content-Length') || $response->headers->has('Transfer-Encoding')) {
+            return;
+        }
+
+        if ($response instanceof StreamedResponse || $response instanceof BinaryFileResponse) {
+            return;
+        }
+
+        $response->headers->set('Content-Length', (string) strlen((string) $response->getContent()));
     }
 
     private function contentSecurityPolicy(): string

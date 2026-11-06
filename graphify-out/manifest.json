@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "app/Http/Middleware/SecurityHeaders.php": {
-    "mtime": 1793997923.8353958,
-    "seen": 1793997962.009134,
-    "ast_hash": "bd6365727b64b082fc031eb7a9ff9d8a",
+    "mtime": 1793998667.0436468,
+    "seen": 1793998714.654326,
+    "ast_hash": "45827915e5581751b56f4db0955678db",
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/HomeBlockRequest.php": {
@@ -1812,9 +1812,9 @@
     "semantic_hash": ""
   },
   "tests/Feature/StagingAndPresentationTest.php": {
-    "mtime": 1793997917.0123925,
-    "seen": 1793997962.0094259,
-    "ast_hash": "29fc2b108ad1a34be05f3274b743cdfc",
+    "mtime": 1793998661.6736817,
+    "seen": 1793998714.654639,
+    "ast_hash": "e01eca9a27e734de3897362a8093c44f",
     "semantic_hash": ""
   },
   "package-lock.json": {

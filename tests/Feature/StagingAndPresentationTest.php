@@ -50,4 +50,13 @@ class StagingAndPresentationTest extends TestCase
             ->assertSee('Back to home')
             ->assertSee('ICSMI');
     }
+
+    public function test_full_responses_declare_their_length_so_proxies_can_finish_them(): void
+    {
+        config(['site.noindex' => false]);
+
+        $this->get('/robots.txt')
+            ->assertOk()
+            ->assertHeader('Content-Length', (string) strlen("User-agent: *\nDisallow:\n"));
+    }
 }
