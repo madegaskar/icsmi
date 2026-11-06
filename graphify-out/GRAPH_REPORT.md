@@ -1,7 +1,7 @@
 # Graph Report - icsmi-baru  (2026-11-07)
 
 ## Corpus Check
-- 468 files · ~139,701 words
+- 301 files · ~50,536 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 16 file(s) not represented in the graph (top: (none) 11, .example 1, .xml 1)
 
@@ -9,6 +9,11 @@
 - 1921 nodes · 3844 edges · 385 communities (61 shown, 324 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 100 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `0f52aeda`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - TestCase
@@ -162,8 +167,8 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `User` - 107 edges
-2. `Role` - 66 edges
-3. `Controller` - 66 edges
+2. `Controller` - 66 edges
+3. `Role` - 66 edges
 4. `Manuscript` - 65 edges
 5. `ManuscriptStatus` - 55 edges
 6. `TestCase` - 54 edges
@@ -179,10 +184,10 @@
   tests/Feature/MenuAndHomeTest.php → app/Models/User.php
 - `AdminAndReportsTest` --references--> `User`  [EXTRACTED]
   tests/Feature/AdminAndReportsTest.php → app/Models/User.php
+- `{closure#11}()` --references--> `ManuscriptStatusChanged`  [EXTRACTED]
+  tests/Feature/ManuscriptWorkflowTest.php → app/Notifications/ManuscriptStatusChanged.php
 - `ManuscriptWorkflowTest` --references--> `User`  [EXTRACTED]
   tests/Feature/ManuscriptWorkflowTest.php → app/Models/User.php
-- `PagesAndRevisionsTest` --references--> `User`  [EXTRACTED]
-  tests/Feature/PagesAndRevisionsTest.php → app/Models/User.php
 
 ## Import Cycles
 - None detected.
@@ -442,16 +447,16 @@ Nodes (3): extra, laravel, dont-discover
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `User` connect `User` to `TestCase`, `MenuAndHomeTest.php`, `ContentImporter`, `Illuminate\Http\RedirectResponse`, `NewPasswordController.php`, `Illuminate\Database\Eloquent\Model`, `Manuscript`, `ProfileTabsAndBellTest`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `Media`, `ManuscriptStatus`, `PagesAndRevisionsTest`, `ReviewStatus`, `SubmissionController.php`, `Illuminate\Http\Request`, `AnnouncementsAndContentTest`, `Page`, `Controller`, `MediaLibraryTest`, `ArticlePublisher.php`, `PageEditor`, `Role`, `ManuscriptWorkflowTest.php`, `Illuminate\Database\Eloquent\Relations\HasMany`, `MenuAndHomeTest.php`, `PageRevision`, `ReviewerController.php`, `ReviewAssignment`, `EmailVerificationTest.php`, `UserRole`, `Illuminate\Support\Facades\Storage`, `Illuminate\Foundation\Http\FormRequest`?**
-  _High betweenness centrality (0.097) - this node is a cross-community bridge._
+  _High betweenness centrality (0.103) - this node is a cross-community bridge._
 - **What connects `admin.partials-tabs`, `editor.partials.tabs`, `editor.partials.tabs` to the rest of the system?**
   _72 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `TestCase` be split into smaller, more focused modules?**
   _Cohesion score 0.06956521739130435 - nodes in this community are weakly interconnected._
-- **Why does `Role` connect `Role` to `TestCase`, `MenuAndHomeTest.php`, `NewPasswordController.php`, `Illuminate\Database\Eloquent\Model`, `Manuscript`, `ProfileTabsAndBellTest`, `PublicSubmissionTest.php`, `AdminAndReportsTest`, `Media`, `ManuscriptStatus`, `SubmissionController.php`, `AnnouncementsAndContentTest`, `web.php`, `Controller`, `MediaLibraryTest`, `SecurityFoundationTest`, `User`, `Closure`, `Risiko dan penanganannya`, `ManuscriptWorkflowTest.php`, `MenuAndHomeTest.php`, `ReviewerController.php`, `Illuminate\Support\Facades\Storage`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Why does `TestCase` connect `TestCase` to `StatusBadgeTest`, `ProfileTabsAndBellTest`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `Media`, `ManuscriptStatus`, `PagesAndRevisionsTest`, `AnnouncementsAndContentTest`, `MediaLibraryTest`, `SecurityFoundationTest`, `User`, `PublicSiteTest`, `Risiko dan penanganannya`, `Role`, `ManuscriptWorkflowTest.php`, `MenuAndHomeTest.php`, `VisitorStatsTest`, `EmailVerificationTest.php`, `Illuminate\Support\Facades\Storage`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `MenuAndHomeTest.php` be split into smaller, more focused modules?**
   _Cohesion score 0.09655172413793103 - nodes in this community are weakly interconnected._
-- **Why does `TestCase` connect `TestCase` to `StatusBadgeTest`, `ProfileTabsAndBellTest`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `Media`, `ManuscriptStatus`, `PagesAndRevisionsTest`, `AnnouncementsAndContentTest`, `MediaLibraryTest`, `SecurityFoundationTest`, `User`, `PublicSiteTest`, `Risiko dan penanganannya`, `Role`, `ManuscriptWorkflowTest.php`, `MenuAndHomeTest.php`, `VisitorStatsTest`, `EmailVerificationTest.php`, `Illuminate\Support\Facades\Storage`?**
-  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+- **Why does `Role` connect `Role` to `TestCase`, `MenuAndHomeTest.php`, `NewPasswordController.php`, `Illuminate\Database\Eloquent\Model`, `Manuscript`, `ProfileTabsAndBellTest`, `PublicSubmissionTest.php`, `AdminAndReportsTest`, `Media`, `ManuscriptStatus`, `SubmissionController.php`, `AnnouncementsAndContentTest`, `web.php`, `Controller`, `MediaLibraryTest`, `SecurityFoundationTest`, `User`, `Closure`, `Risiko dan penanganannya`, `ManuscriptWorkflowTest.php`, `MenuAndHomeTest.php`, `ReviewerController.php`, `Illuminate\Support\Facades\Storage`?**
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
 - **Should `SubmissionController.php` be split into smaller, more focused modules?**
   _Cohesion score 0.1402116402116402 - nodes in this community are weakly interconnected._

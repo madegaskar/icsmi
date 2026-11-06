@@ -17,8 +17,7 @@ class PublicUrlTest extends TestCase
 
         $this->withServerVariables(['HTTP_HOST' => 'localhost:8001'])
             ->get('/')
-            ->assertOk();
-
-        $this->assertSame('https://share.example.test/build/app.css', url('/build/app.css'));
+            ->assertOk()
+            ->assertSee('rel="stylesheet" href="https://share.example.test/build/assets/', false);
     }
 }
