@@ -30,6 +30,12 @@ use App\Models\Media;
 use App\Services\ReportBuilder;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/robots.txt', function () {
+    $rules = config('site.noindex') ? "User-agent: *\nDisallow: /\n" : "User-agent: *\nDisallow:\n";
+
+    return response($rules, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
+})->name('robots');
+
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/editorial-board', [PageController::class, 'editorialBoard'])->name('editorial-board');
 Route::get('/speakers', [PageController::class, 'speakers'])->name('speakers');

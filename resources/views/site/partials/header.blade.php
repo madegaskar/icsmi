@@ -9,7 +9,7 @@
         @if ($banner)
             {{-- The banner image is the whole top of the header. It carries its own text, so no words are added on top. --}}
             <picture data-header-banner class="block w-full">
-                <img src="{{ route('media.show', [$banner, 'desktop']) }}" alt="{{ $banner->alt_text }}" class="block h-64 w-full object-cover">
+                <img src="{{ route('media.show', [$banner, 'desktop']) }}" alt="{{ $banner->alt_text }}" class="block h-auto w-full object-contain sm:h-64 sm:object-cover">
             </picture>
         @else
             <div class="px-6 py-10 text-center sm:py-14">

@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "app/Http/Middleware/SecurityHeaders.php": {
-    "mtime": 1793717707.0,
-    "seen": 1793991677.433697,
-    "ast_hash": "e00b1085f47d83e0eca9abbcbdacf457",
+    "mtime": 1793997923.8353958,
+    "seen": 1793997962.009134,
+    "ast_hash": "bd6365727b64b082fc031eb7a9ff9d8a",
     "semantic_hash": ""
   },
   "app/Http/Requests/Admin/HomeBlockRequest.php": {
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "config/site.php": {
-    "mtime": 1793960550.4684854,
-    "seen": 1793991677.433774,
-    "ast_hash": "41c082a055d0d8583fcd0f73d0bd08d0",
+    "mtime": 1793997923.8351805,
+    "seen": 1793997962.0092218,
+    "ast_hash": "db8a2272e855a844475c862705638997",
     "semantic_hash": ""
   },
   "config/trustedproxy.php": {
@@ -1512,9 +1512,9 @@
     "semantic_hash": ""
   },
   "resources/views/site/partials/header.blade.php": {
-    "mtime": 1793965847.9237258,
-    "seen": 1793991677.4339101,
-    "ast_hash": "f3cb1873739d10a9ecfc492e29926d2d",
+    "mtime": 1793997923.8361793,
+    "seen": 1793997962.0093791,
+    "ast_hash": "3f8ce849dbce7d402511bc3a81ad65cc",
     "semantic_hash": ""
   },
   "resources/views/site/partials/menu-item.blade.php": {
@@ -1590,9 +1590,9 @@
     "semantic_hash": ""
   },
   "routes/web.php": {
-    "mtime": 1793978184.3753147,
-    "seen": 1793991677.433923,
-    "ast_hash": "d1b4dab5c71a3448881b4a3d279004d2",
+    "mtime": 1793997923.8355982,
+    "seen": 1793997962.009394,
+    "ast_hash": "aa867ce60c5decc9e6a48cd384009a3f",
     "semantic_hash": ""
   },
   "tailwind.config.js": {
@@ -1799,16 +1799,22 @@
     "ast_hash": "dd681115815969df68130da75429a536",
     "semantic_hash": ""
   },
-  "public/robots.txt": {
-    "mtime": 1790776605.0,
-    "seen": 1793991677.434129,
-    "ast_hash": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "semantic_hash": ""
-  },
   "tests/Feature/PublicUrlTest.php": {
     "mtime": 1793997541.5648623,
     "seen": 1793997580.1349518,
     "ast_hash": "0fe98186a8944c1fc7cd3e36e10bf07d",
+    "semantic_hash": ""
+  },
+  "resources/views/errors/404.blade.php": {
+    "mtime": 1793997923.8359156,
+    "seen": 1793997962.0093381,
+    "ast_hash": "a23053a22098855c8d36502001c10bfa",
+    "semantic_hash": ""
+  },
+  "tests/Feature/StagingAndPresentationTest.php": {
+    "mtime": 1793997917.0123925,
+    "seen": 1793997962.0094259,
+    "ast_hash": "29fc2b108ad1a34be05f3274b743cdfc",
     "semantic_hash": ""
   },
   "package-lock.json": {
