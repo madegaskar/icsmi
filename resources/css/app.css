@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.content > * + * { @apply mt-4; }
+.content h2 { @apply mt-8 text-xl font-semibold; }
+.content h3 { @apply mt-6 text-lg font-semibold; }
+.content ul { @apply list-disc pl-6; }
+.content ol { @apply list-decimal pl-6; }
+.content a { @apply text-emerald-800 underline; }
+.content p, .content li { @apply leading-relaxed text-gray-800; }
