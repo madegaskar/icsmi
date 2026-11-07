@@ -5,9 +5,9 @@
         <ul class="mt-6 divide-y divide-gray-200">
             @forelse ($issues as $issue)
                 <li class="py-4">
-                    <div class="{{ $issue->coverMedia ? 'grid items-start gap-6 sm:grid-cols-[10rem_minmax(0,1fr)]' : '' }}">
+                    <div class="{{ $issue->coverMedia ? 'grid items-start gap-6 sm:grid-cols-[222px_minmax(0,1fr)]' : '' }}">
                         @if ($issue->coverMedia)
-                            <figure data-cover-image class="relative aspect-[3/4] overflow-hidden rounded-md border border-gray-200 shadow-sm">
+                            <figure data-cover-image class="relative h-[309px] w-[222px] max-w-full overflow-hidden rounded-md border border-gray-200 shadow-sm">
                                 <img src="{{ route('media.show', [$issue->coverMedia, 'desktop']) }}" alt="{{ $issue->coverMedia->alt_text }}" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
                             </figure>
                         @endif
