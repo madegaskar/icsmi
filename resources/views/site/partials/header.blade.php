@@ -2,7 +2,11 @@
     $menu = \App\Models\MenuItem::publicTree(\App\Models\MenuItem::LOCATION_HEADER);
     $banner = config('site.header_banner_uuid') ? \App\Models\Media::where('uuid', config('site.header_banner_uuid'))->first() : null;
     $authPaths = ['/login', '/register'];
-    $authActions = $menu->filter(fn ($item) => in_array($item->href(), $authPaths, true))->values();
+    $registrationOpen = \App\Models\SiteSetting::registrationOpen();
+    $authActions = $menu
+        ->filter(fn ($item) => in_array($item->href(), $authPaths, true))
+        ->reject(fn ($item) => $item->href() === '/register' && ! $registrationOpen)
+        ->values();
     $navItems = $menu->reject(fn ($item) => in_array($item->href(), $authPaths, true))->values();
 @endphp
 

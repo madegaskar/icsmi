@@ -9,4 +9,5 @@
     <a class="text-gray-600 hover:text-gray-900" href="{{ route('admin.content.index') }}">Content</a>
     <a class="text-gray-600 hover:text-gray-900" href="{{ route('reports.index') }}">Reports</a>
     <a class="text-gray-600 hover:text-gray-900" href="{{ route('admin.audit-log') }}">Audit Log</a>
+    <a class="text-gray-600 hover:text-gray-900" href="{{ route('admin.settings.edit') }}">Settings</a>
 </nav>
