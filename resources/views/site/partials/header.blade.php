@@ -23,16 +23,14 @@
         @endif
 
         <div class="relative border-t border-emerald-900/70">
-            {{-- Desktop: menu in the middle, Register and Login as buttons (or the account controls) on the right. --}}
+            {{-- Desktop: menu on the left, Register and Login as buttons (or the account controls) on the right. --}}
             <nav class="hidden h-16 items-center gap-6 px-4 text-sm md:flex">
-                <div class="flex-1"></div>
-
-                <div class="flex items-center justify-center gap-6">
+                <div class="flex flex-1 items-center justify-start gap-6">
                     @foreach ($navItems as $item)
                         @include('site.partials.menu-item', [
                             'item' => $item,
                             'linkClass' => 'text-emerald-100 hover:text-white',
-                            'dropdownClass' => 'absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 rounded-md border border-gray-200 bg-white py-1 text-sm text-left text-gray-800 shadow-md',
+                            'dropdownClass' => 'absolute left-0 z-10 mt-2 w-56 rounded-md border border-gray-200 bg-white py-1 text-sm text-left text-gray-800 shadow-md',
                         ])
                     @endforeach
                 </div>
