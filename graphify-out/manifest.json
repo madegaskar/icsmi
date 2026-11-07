@@ -1512,9 +1512,9 @@
     "semantic_hash": ""
   },
   "resources/views/site/partials/header.blade.php": {
-    "mtime": 1793997923.8361793,
-    "seen": 1793997962.0093791,
-    "ast_hash": "3f8ce849dbce7d402511bc3a81ad65cc",
+    "mtime": 1794027471.0112765,
+    "seen": 1794027498.884268,
+    "ast_hash": "e2c64d476ae9c5e9e8ee19bbd1e5d85c",
     "semantic_hash": ""
   },
   "resources/views/site/partials/menu-item.blade.php": {
@@ -1839,6 +1839,12 @@
     "mtime": 1794027093.5637953,
     "seen": 1794027159.932798,
     "ast_hash": "429eea9cc54dce38ff50c38e4eb33d1b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/MobileHeaderTest.php": {
+    "mtime": 1794027454.7822552,
+    "seen": 1794027498.884305,
+    "ast_hash": "4425017dcfbeb238bce73f57f7cda4d4",
     "semantic_hash": ""
   },
   "package-lock.json": {
