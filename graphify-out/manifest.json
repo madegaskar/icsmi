@@ -1326,9 +1326,9 @@
     "semantic_hash": ""
   },
   "resources/views/layouts/navigation.blade.php": {
-    "mtime": 1793978345.712521,
-    "seen": 1793991677.4338791,
-    "ast_hash": "00edb34b5582122ce41be250df51cd0a",
+    "mtime": 1794027761.397652,
+    "seen": 1794027851.426601,
+    "ast_hash": "94f580233e1b9a0f1699744e7f853b9e",
     "semantic_hash": ""
   },
   "resources/views/manuscripts/files.blade.php": {
@@ -1512,9 +1512,9 @@
     "semantic_hash": ""
   },
   "resources/views/site/partials/header.blade.php": {
-    "mtime": 1794027471.0112765,
-    "seen": 1794027498.884268,
-    "ast_hash": "e2c64d476ae9c5e9e8ee19bbd1e5d85c",
+    "mtime": 1794027773.5219913,
+    "seen": 1794027851.4266398,
+    "ast_hash": "81e00f470e313a229bde92d39b43e40f",
     "semantic_hash": ""
   },
   "resources/views/site/partials/menu-item.blade.php": {
@@ -1845,6 +1845,24 @@
     "mtime": 1794027454.7822552,
     "seen": 1794027498.884305,
     "ast_hash": "4425017dcfbeb238bce73f57f7cda4d4",
+    "semantic_hash": ""
+  },
+  "resources/views/site/partials/account-controls.blade.php": {
+    "mtime": 1794027761.3714232,
+    "seen": 1794027851.426634,
+    "ast_hash": "71a1b95189e9de157e4c3b7afdfc0c9d",
+    "semantic_hash": ""
+  },
+  "resources/views/site/partials/notification-bell.blade.php": {
+    "mtime": 1794027761.3690946,
+    "seen": 1794027851.426643,
+    "ast_hash": "5962d029ddb3d6461a61ae0ae132fe8b",
+    "semantic_hash": ""
+  },
+  "tests/Feature/HeaderAccountTest.php": {
+    "mtime": 1794027742.5641418,
+    "seen": 1794027851.426673,
+    "ast_hash": "51ef6e59858bc9907f5f7ef3a8ab2e79",
     "semantic_hash": ""
   },
   "package-lock.json": {
