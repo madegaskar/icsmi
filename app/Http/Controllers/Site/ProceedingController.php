@@ -19,7 +19,7 @@ class ProceedingController extends Controller
     public function archives(): View
     {
         return view('site.proceedings.archives', [
-            'issues' => Issue::published()->withCount(['articles' => fn ($query) => $query->published()])->orderByDesc('year')->orderByDesc('published_at')->paginate(12),
+            'issues' => Issue::published()->with('coverMedia')->withCount(['articles' => fn ($query) => $query->published()])->orderByDesc('year')->orderByDesc('published_at')->paginate(12),
         ]);
     }
 

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['title', 'slug', 'year', 'volume', 'number', 'conference_dates', 'location', 'isbn', 'issn', 'description', 'published_at'])]
+#[Fillable(['title', 'slug', 'year', 'volume', 'number', 'conference_dates', 'location', 'isbn', 'issn', 'description', 'published_at', 'cover_media_id'])]
 class Issue extends Model
 {
     /** @use HasFactory<IssueFactory> */
@@ -30,6 +31,11 @@ class Issue extends Model
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function coverMedia(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'cover_media_id');
     }
 
     public function scopePublished(Builder $query): void

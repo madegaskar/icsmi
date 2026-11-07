@@ -144,9 +144,9 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Editorial/IssueController.php": {
-    "mtime": 1793718958.0,
-    "seen": 1793991677.4336798,
-    "ast_hash": "f8568b98c8359ea089c8f3e5734f6d15",
+    "mtime": 1794073846.8055744,
+    "seen": 1794073905.933534,
+    "ast_hash": "215f84d07db66be99bc44d46d9c4d07a",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Editorial/MediaLibraryController.php": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Site/ProceedingController.php": {
-    "mtime": 1793967847.9180326,
-    "seen": 1793991677.433689,
-    "ast_hash": "7fcf52df19adb6973172b8aec31f98df",
+    "mtime": 1794073879.5690696,
+    "seen": 1794073905.9335449,
+    "ast_hash": "e9c6b61567eac5f51c64b8db830779f3",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Site/SubmissionController.php": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "app/Models/Issue.php": {
-    "mtime": 1793718076.0,
-    "seen": 1793991677.433711,
-    "ast_hash": "08d0d5e5d2da23c969d28fbb04f80760",
+    "mtime": 1794073853.5387619,
+    "seen": 1794073905.933569,
+    "ast_hash": "884b6fe667499f27f69a7871ba831c95",
     "semantic_hash": ""
   },
   "app/Models/Keyword.php": {
@@ -1260,9 +1260,9 @@
     "semantic_hash": ""
   },
   "resources/views/editor/issues/form.blade.php": {
-    "mtime": 1793718958.0,
-    "seen": 1793991677.433868,
-    "ast_hash": "d1e1e2b4b582eae99f95cbeaa611d3db",
+    "mtime": 1794073865.4089801,
+    "seen": 1794073905.933753,
+    "ast_hash": "e61e8cc4ab5b7c21b631f7ffb2fea0b5",
     "semantic_hash": ""
   },
   "resources/views/editor/issues/index.blade.php": {
@@ -1536,9 +1536,9 @@
     "semantic_hash": ""
   },
   "resources/views/site/proceedings/archives.blade.php": {
-    "mtime": 1793718076.0,
-    "seen": 1793991677.4339142,
-    "ast_hash": "b8956a4a89032f0b15c8753cf97cbe6d",
+    "mtime": 1794073879.591019,
+    "seen": 1794073905.933811,
+    "ast_hash": "49af2ced1eccedcb0b67384521d19131",
     "semantic_hash": ""
   },
   "resources/views/site/proceedings/empty.blade.php": {
@@ -1893,6 +1893,18 @@
     "mtime": 1794028511.1399713,
     "seen": 1794028516.7337449,
     "ast_hash": "fd748da06fdb10390aad01c215240b16",
+    "semantic_hash": ""
+  },
+  "database/migrations/2026_11_18_000001_add_cover_media_to_issues_table.php": {
+    "mtime": 1794073829.946369,
+    "seen": 1794073905.933679,
+    "ast_hash": "a558dcd443ef2146dd428a819a8ef332",
+    "semantic_hash": ""
+  },
+  "tests/Feature/ProceedingCoverTest.php": {
+    "mtime": 1794073797.0100935,
+    "seen": 1794073905.933846,
+    "ast_hash": "5fa5d03b0f903b60774fd35da0515ced",
     "semantic_hash": ""
   },
   "package-lock.json": {
