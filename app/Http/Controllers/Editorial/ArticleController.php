@@ -104,7 +104,7 @@ class ArticleController extends Controller
             'reference_list' => ['nullable', 'string', 'max:20000'],
             'first_page' => ['nullable', 'integer', 'min:1', 'required_with:last_page'],
             'last_page' => ['nullable', 'integer', 'gte:first_page'],
-            'pdf' => ['nullable', 'file', 'max:20480', new ManuscriptDocument(pdfOnly: true)],
+            'pdf' => ['nullable', 'file', 'max:20480', new ManuscriptDocument(['pdf'])],
             'published' => ['nullable', 'boolean'],
             'authors' => ['required', 'array', 'min:1', 'max:'.StoreManuscriptRequest::MAX_AUTHORS],
             'authors.*.name' => ['required', 'string', 'max:255'],

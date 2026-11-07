@@ -77,7 +77,7 @@ class EditorController extends Controller
             'doi' => ['nullable', 'string', 'max:255', 'regex:/^10\.\d{4,9}\/\S+$/', Rule::unique('articles', 'doi')],
             'first_page' => ['nullable', 'integer', 'min:1', 'required_with:last_page'],
             'last_page' => ['nullable', 'integer', 'gte:first_page'],
-            'pdf' => ['required', 'file', 'max:20480', new ManuscriptDocument(pdfOnly: true)],
+            'pdf' => ['required', 'file', 'max:20480', new ManuscriptDocument(['pdf'])],
         ]);
 
         $publisher->publish($manuscript->load('authors'), $request->user(), $validated, $request->file('pdf'));

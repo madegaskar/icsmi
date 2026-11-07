@@ -49,8 +49,24 @@ class PublicSubmissionTest extends TestCase
             'institution_address' => 'Jl. Contoh No. 1, Jakarta',
             'abstract' => 'An abstract.',
             'keywords' => 'green, innovation',
-            'file' => UploadedFile::fake()->createWithContent('my paper.pdf', "%PDF-1.4\ncontent\n%%EOF"),
+            'file' => UploadedFile::fake()->createWithContent('my paper.docx', $this->docxBytes()),
         ];
+    }
+
+    /** A minimal but structurally valid DOCX: a zip with the Word document part and no macros. */
+    private function docxBytes(): string
+    {
+        $path = tempnam(sys_get_temp_dir(), 'docx');
+        $zip = new \ZipArchive;
+        $zip->open($path, \ZipArchive::OVERWRITE | \ZipArchive::CREATE);
+        $zip->addFromString('[Content_Types].xml', '<Types/>');
+        $zip->addFromString('word/document.xml', '<w:document/>');
+        $zip->close();
+
+        $bytes = file_get_contents($path);
+        unlink($path);
+
+        return $bytes;
     }
 
     private function submit(array $overrides = []): PublicSubmission
@@ -323,10 +339,25 @@ class PublicSubmissionTest extends TestCase
         $this->assertDatabaseCount('public_submissions', 0);
     }
 
+    public function test_only_docx_files_are_accepted_for_public_submission(): void
+    {
+        $this->post('/submission', $this->payload([
+            'file' => UploadedFile::fake()->createWithContent('my paper.pdf', "%PDF-1.4\ncontent\n%%EOF"),
+        ]))->assertSessionHasErrors('file');
+
+        $this->assertDatabaseCount('public_submissions', 0);
+
+        $this->post('/submission', $this->payload([
+            'file' => UploadedFile::fake()->createWithContent('my paper.docx', $this->docxBytes()),
+        ]))->assertSessionHasNoErrors();
+
+        $this->assertDatabaseCount('public_submissions', 1);
+    }
+
     public function test_dangerous_files_are_rejected(): void
     {
         $files = [
-            UploadedFile::fake()->createWithContent('shell.pdf', '<?php system($_GET["c"]);'),
+            UploadedFile::fake()->createWithContent('shell.docx', '<?php system($_GET["c"]);'),
             UploadedFile::fake()->createWithContent('shell.php', "%PDF-1.4\n"),
             UploadedFile::fake()->createWithContent('page.html', "%PDF-1.4\n"),
             UploadedFile::fake()->createWithContent('big.pdf', "%PDF-1.4\n")->size(20481),
@@ -447,7 +478,7 @@ class PublicSubmissionTest extends TestCase
 
         $this->actingAs($this->editor)->get('/editor/submissions/'.$submission->id.'/file')
             ->assertOk()
-            ->assertDownload($submission->code.'.pdf');
+            ->assertDownload($submission->code.'.docx');
     }
 
     public function test_editor_file_link_keeps_working_after_confirmation(): void

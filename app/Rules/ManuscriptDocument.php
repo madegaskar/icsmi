@@ -8,23 +8,35 @@ use Illuminate\Http\UploadedFile;
 use ZipArchive;
 
 /**
- * Accepts only real PDF and macro-free DOCX files, judged by content rather than by name.
+ * Accepts only real files of the allowed types (PDF and macro-free DOCX by default), judged by content rather than by name.
  */
 class ManuscriptDocument implements ValidationRule
 {
-    public function __construct(private bool $pdfOnly = false) {}
+    /**
+     * @param  array<int, string>  $allowed  Extensions to accept: 'pdf', 'docx', or both.
+     */
+    public function __construct(private array $allowed = ['pdf', 'docx']) {}
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $valid = $value instanceof UploadedFile && match (strtolower($value->getClientOriginalExtension())) {
-            'pdf' => $this->isPdf($value),
-            'docx' => ! $this->pdfOnly && $this->isDocx($value),
-            default => false,
-        };
+        $extension = $value instanceof UploadedFile ? strtolower($value->getClientOriginalExtension()) : '';
+
+        $valid = $value instanceof UploadedFile
+            && in_array($extension, $this->allowed, true)
+            && match ($extension) {
+                'pdf' => $this->isPdf($value),
+                'docx' => $this->isDocx($value),
+                default => false,
+            };
 
         if (! $valid) {
-            $fail($this->pdfOnly ? 'The :attribute must be a valid PDF file.' : 'The :attribute must be a valid PDF or DOCX file.');
+            $fail('The :attribute must be a valid '.$this->allowedLabel().' file.');
         }
+    }
+
+    private function allowedLabel(): string
+    {
+        return implode(' or ', array_map(strtoupper(...), $this->allowed));
     }
 
     private function isPdf(UploadedFile $file): bool

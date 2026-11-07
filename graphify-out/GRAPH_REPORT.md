@@ -1,48 +1,49 @@
 # Graph Report - icsmi-baru  (2026-11-07)
 
 ## Corpus Check
-- 316 files · ~52,180 words
+- 316 files · ~52,280 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 16 file(s) not represented in the graph (top: (none) 11, .example 1, .xml 1)
 
 ## Summary
-- 1924 nodes · 3974 edges · 332 communities (54 shown, 278 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 100 edges (avg confidence: 0.89)
+- 1926 nodes · 3977 edges · 332 communities (54 shown, 278 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 103 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `aa7250d0`
+- Built from commit: `e5d3f91a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - TestCase
-- Illuminate\Database\Seeder
-- ReportBuilder
+- MenuAndHomeTest.php
+- App\Http\Controllers\ReportController
 - ContentImporter
 - Illuminate\Http\RedirectResponse
-- MenuSeeder
+- ManuscriptSubmitted
 - AppServiceProvider.php
 - Illuminate\Database\Eloquent\Model
-- Manuscript
+- User
 - ProfileTabsAndBellTest
 - Illuminate\View\View
-- EmailVerificationTest.php
+- ReviewStatus
 - PublicSubmissionTest
 - PublicSubmissionTest.php
 - MenuAndHomeTest
 - package.json
 - AdminAndReportsTest
-- User
+- App\Services\ArticlePublisher
 - Media
 - PagesAndRevisionsTest
 - ReviewAssignment
 - Risiko dan penanganannya
-- App\Http\Controllers\ProfileController
+- App\Services\ReportBuilder
 - Illuminate\Database\Eloquent\Relations\BelongsTo
 - Illuminate\Database\Eloquent\Builder
 - Illuminate\Database\Schema\Blueprint
 - AnnouncementsAndContentTest
+- web.php
 - Page
 - Article
 - ICSMI
@@ -53,23 +54,22 @@
 - AppServiceProvider
 - MenuItem
 - .record
-- ManuscriptFile
-- ManuscriptStatusChanged
+- PublicSubmissionTest.php
+- ReportBuilder
 - AuditFixesTest.php
-- Illuminate\Support\Str
-- Illuminate\Http\RedirectResponse
-- PageSlug
+- Issue
+- SubmissionController.php
+- ManuscriptWorkflowTest.php
 - ContentImportValidator.php
 - Closure
 - HomeBlock
 - PublicSiteTest
-- Illuminate\Database\Eloquent\Relations\HasMany
+- App\Models\Manuscript
 - Illuminate\Support\Facades\Schema
-- PageEditor
-- App\Models\User
+- Illuminate\Foundation\Http\FormRequest
+- EditorController.php
 - Illuminate\Database\Migrations\Migration
-- AdminAndReportsTest.php
-- SafeLink
+- App\Models\PublicSubmission
 - 2026_11_14_000002_create_notifications_table.php
 - SidebarSection.php
 - ManuscriptWorkflowTest
@@ -78,17 +78,16 @@
 - BoardMember
 - ReviewerController.php
 - .for
-- SidebarSectionRequest
+- StagingAndPresentationTest
 - composer.json
 - require-dev
 - scripts
-- MenuAndHomeTest.php
+- Citation.php
 - App\Http\Controllers\Admin\ContentController
-- ContentExporter.php
+- HomeBlockRequest
 - config
 - 2026_11_04_000001_connect_public_submissions_to_manuscripts.php
 - VisitorStatsTest
-- SampleProceedingSeeder.php
 - 0001_01_01_000000_create_users_table.php
 - 0001_01_01_000002_create_jobs_table.php
 - psr-4
@@ -161,38 +160,38 @@
 - search.blade.php
 - 2026_11_03_000002_create_role_user_table.php
 - navigation.blade.php
-- SidebarEditorTest.php
+- console.php
 - admin.partials-tabs
 - ImageReencoder
-- Illuminate\View\Component
+- HeaderAccountTest
 - RegistrationFormTest
 - account-controls.blade.php
 - StatusBadgeTest
 - ManuscriptDocument
 
 ## God Nodes (most connected - your core abstractions)
-1. `User` - 106 edges
-2. `Manuscript` - 65 edges
-3. `Controller` - 64 edges
-4. `Role` - 64 edges
-5. `ManuscriptStatus` - 55 edges
-6. `TestCase` - 54 edges
+1. `User` - 99 edges
+2. `Role` - 61 edges
+3. `Controller` - 58 edges
+4. `Manuscript` - 58 edges
+5. `ManuscriptStatus` - 53 edges
+6. `TestCase` - 52 edges
 7. `ManuscriptWorkflowTest` - 45 edges
-8. `Article` - 42 edges
-9. `Risiko dan penanganannya` - 40 edges
-10. `AdminAndReportsTest` - 39 edges
+8. `Risiko dan penanganannya` - 40 edges
+9. `AdminAndReportsTest` - 39 edges
+10. `Page` - 38 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `{closure#2}()` --references--> `Role`  [EXTRACTED]
-  tests/Feature/SecurityFoundationTest.php → app/Enums/Role.php
-- `SidebarEditorTest` --references--> `User`  [EXTRACTED]
-  tests/Feature/SidebarEditorTest.php → app/Models/User.php
-- `PublicSubmissionTest` --references--> `User`  [EXTRACTED]
-  tests/Feature/PublicSubmissionTest.php → app/Models/User.php
 - `MenuAndHomeTest` --references--> `User`  [EXTRACTED]
   tests/Feature/MenuAndHomeTest.php → app/Models/User.php
 - `AdminAndReportsTest` --references--> `User`  [EXTRACTED]
   tests/Feature/AdminAndReportsTest.php → app/Models/User.php
+- `AnnouncementsAndContentTest` --references--> `User`  [EXTRACTED]
+  tests/Feature/AnnouncementsAndContentTest.php → app/Models/User.php
+- `HeroImageUploadTest` --references--> `User`  [EXTRACTED]
+  tests/Feature/HeroImageUploadTest.php → app/Models/User.php
+- `ManuscriptWorkflowTest` --references--> `User`  [EXTRACTED]
+  tests/Feature/ManuscriptWorkflowTest.php → app/Models/User.php
 
 ## Import Cycles
 - None detected.
@@ -200,136 +199,144 @@
 ## Communities (332 total, 278 thin omitted)
 
 ### Community 0 - "TestCase"
-Cohesion: 0.09
-Nodes (8): AuthenticationTest, PasswordConfirmationTest, PasswordUpdateTest, RegistrationTest, ExampleTest, InformationTableTest, ProfileTest, TestCase
+Cohesion: 0.06
+Nodes (10): AuditLog, AuthenticationTest, EmailVerificationTest, PasswordConfirmationTest, PasswordUpdateTest, RegistrationTest, ExampleTest, InformationTableTest (+2 more)
 
-### Community 1 - "Illuminate\Database\Seeder"
-Cohesion: 0.19
-Nodes (4): DatabaseSeeder, PageSeeder, SampleAccountSeeder, SampleManuscriptSeeder
+### Community 1 - "MenuAndHomeTest.php"
+Cohesion: 0.06
+Nodes (8): DatabaseSeeder, HomeBlockSeeder, MenuSeeder, PageSeeder, SampleAccountSeeder, SampleManuscriptSeeder, SampleProceedingSeeder, SidebarSectionSeeder
 
-### Community 2 - "ReportBuilder"
-Cohesion: 0.12
-Nodes (5): {closure#1}(), {closure#2}(), ReportController, ManuscriptFileController, ReportBuilder
+### Community 2 - "App\Http\Controllers\ReportController"
+Cohesion: 0.20
+Nodes (3): {closure#1}(), {closure#2}(), ReportController
 
 ### Community 3 - "ContentImporter"
-Cohesion: 0.21
+Cohesion: 0.20
 Nodes (4): {closure#1}(), {closure#2}(), {closure#3}(), ContentImporter
 
 ### Community 4 - "Illuminate\Http\RedirectResponse"
-Cohesion: 0.08
-Nodes (10): AuthenticatedSessionController, ConfirmablePasswordController, EmailVerificationNotificationController, EmailVerificationPromptController, NewPasswordController, PasswordController, PasswordResetLinkController, VerifyEmailController (+2 more)
+Cohesion: 0.07
+Nodes (12): AnnouncementController, AuthenticatedSessionController, ConfirmablePasswordController, EmailVerificationNotificationController, EmailVerificationPromptController, {closure#1}(), NewPasswordController, PasswordController (+4 more)
+
+### Community 5 - "ManuscriptSubmitted"
+Cohesion: 0.16
+Nodes (5): {closure#2}(), ManuscriptSubmitted, ReviewInvitation, {closure#3}(), {closure#10}()
 
 ### Community 6 - "AppServiceProvider.php"
-Cohesion: 0.17
+Cohesion: 0.16
 Nodes (6): {closure#1}(), {closure#3}(), {closure#4}(), {closure#5}(), {closure#6}(), {closure#7}()
 
 ### Community 7 - "Illuminate\Database\Eloquent\Model"
-Cohesion: 0.16
-Nodes (3): ArticleAuthor, Keyword, StatusHistory
+Cohesion: 0.15
+Nodes (5): ArticleAuthor, Keyword, {closure#1}(), ManuscriptAuthor, PageVisit
 
-### Community 8 - "Manuscript"
+### Community 8 - "User"
 Cohesion: 0.09
-Nodes (17): {closure#3}(), EditorController, Manuscript, ManuscriptPolicy, {closure#1}(), ManuscriptWorkflow, {closure#1}(), {closure#10}() (+9 more)
+Nodes (9): {closure#3}(), AuthorManuscriptController, Manuscript, User, ManuscriptPolicy, {closure#1}(), {closure#4}(), {closure#5}() (+1 more)
 
 ### Community 9 - "ProfileTabsAndBellTest"
 Cohesion: 0.09
 Nodes (3): HeroImageUploadTest, ProfileTabsAndBellTest, SidebarEditorTest
 
 ### Community 10 - "Illuminate\View\View"
-Cohesion: 0.09
-Nodes (5): AuditLogController, UserController, PageController, ProceedingController, AuthorManuscriptController
+Cohesion: 0.11
+Nodes (5): PublicSubmissionController, PageController, ProceedingController, AppLayout, GuestLayout
 
-### Community 12 - "PublicSubmissionTest"
-Cohesion: 0.07
-Nodes (8): PublicSubmissionController, {closure#2}(), PublicSubmission, ConfirmPublicSubmission, {closure#1}(), foreach(), PublicSubmissionTest, test_confirmation_mail_to_one_address_is_limited_per_day()
+### Community 11 - "ReviewStatus"
+Cohesion: 0.12
+Nodes (8): ReviewStatus, Accepted, Cancelled, Completed, Declined, Invited, ManuscriptFileController, ManuscriptFilePolicy
 
 ### Community 15 - "package.json"
 Cohesion: 0.10
 Nodes (24): devDependencies, autoprefixer@^10.4.2, concurrently@^10.0.3, laravel-vite-plugin@^3.1, postcss@^8.4.31, tailwindcss@^3.1.0, @tailwindcss/forms@^0.5.2, vite@^8.0.0 (+16 more)
 
-### Community 17 - "User"
-Cohesion: 0.07
-Nodes (5): {closure#1}(), {closure#5}(), AuditLog, User, {closure#4}()
-
 ### Community 18 - "Media"
-Cohesion: 0.19
-Nodes (3): MediaLibraryController, Media, MediaUploader
+Cohesion: 0.15
+Nodes (4): MediaLibraryController, MediaController, Media, MediaUploader
 
 ### Community 20 - "ReviewAssignment"
-Cohesion: 0.05
-Nodes (28): ReviewStatus, Accepted, Cancelled, Completed, Declined, Invited, {closure#2}(), {closure#2}() (+20 more)
+Cohesion: 0.17
+Nodes (5): {closure#2}(), ReviewerController, ReviewAssignment, ReviewUpdated, ReviewAssignmentPolicy
+
+### Community 22 - "App\Services\ReportBuilder"
+Cohesion: 0.14
+Nodes (13): {closure#1}(), {closure#13}(), {closure#14}(), {closure#17}(), {closure#18}(), {closure#19}(), {closure#2}(), {closure#20}() (+5 more)
+
+### Community 23 - "Illuminate\Database\Eloquent\Relations\BelongsTo"
+Cohesion: 0.12
+Nodes (3): StatusHistory, {closure#1}(), UserRole
 
 ### Community 24 - "Illuminate\Database\Eloquent\Builder"
-Cohesion: 0.11
-Nodes (17): ArticleController, {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}(), {closure#6}(), {closure#7}(), {closure#8}() (+9 more)
+Cohesion: 0.15
+Nodes (12): {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}(), {closure#6}(), {closure#7}(), {closure#8}(), {closure#9}() (+4 more)
 
 ### Community 25 - "Illuminate\Database\Schema\Blueprint"
 Cohesion: 0.16
 Nodes (14): {closure#1}(), {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}(), {closure#6}(), {closure#7}(), {closure#8}() (+6 more)
 
+### Community 28 - "Page"
+Cohesion: 0.10
+Nodes (7): PageController, Page, PageRevision, {closure#1}(), {closure#2}(), {closure#3}(), PageEditor
+
 ### Community 29 - "Article"
-Cohesion: 0.09
-Nodes (9): ArticleController, {closure#1}(), {closure#2}(), Article, ArticleStat, ArticlePublisher, {closure#1}(), Citation (+1 more)
+Cohesion: 0.15
+Nodes (6): ArticleController, Article, ArticleStat, {closure#10}(), {closure#11}(), {closure#9}()
 
 ### Community 30 - "ICSMI"
 Cohesion: 0.10
 Nodes (18): Backup, Backup dan restore, Batas upload, Batasan yang diketahui, Deploy ke hosting, ICSMI, Konten situs, Menjalankan di komputer lokal (+10 more)
 
 ### Community 33 - "ManuscriptStatus"
-Cohesion: 0.14
-Nodes (9): ManuscriptStatus, Accepted, InReview, Published, Rejected, RevisionRequired, Screening, Submitted (+1 more)
+Cohesion: 0.13
+Nodes (13): ManuscriptStatus, Accepted, InReview, Published, Rejected, RevisionRequired, Screening, Submitted (+5 more)
 
 ### Community 36 - "MenuItem"
 Cohesion: 0.12
 Nodes (6): MenuItemController, {closure#1}(), {closure#2}(), {closure#3}(), MenuItem, MarkdownSections
 
-### Community 39 - "ManuscriptStatusChanged"
-Cohesion: 0.25
-Nodes (4): ManuscriptStatusChanged, {closure#2}(), {closure#6}(), {closure#7}()
+### Community 37 - ".record"
+Cohesion: 0.18
+Nodes (3): SidebarSectionController, SidebarSectionRequest, SidebarSection
 
-### Community 41 - "Illuminate\Support\Str"
-Cohesion: 0.10
-Nodes (6): IssueController, Issue, {closure#8}(), ArticleFactory, IssueFactory, UserFactory
+### Community 38 - "PublicSubmissionTest.php"
+Cohesion: 0.19
+Nodes (3): {closure#2}(), PublicSubmission, ConfirmPublicSubmission
 
-### Community 42 - "Illuminate\Http\RedirectResponse"
+### Community 41 - "Issue"
+Cohesion: 0.06
+Nodes (10): ArticleController, {closure#1}(), {closure#2}(), IssueController, Issue, {closure#8}(), UniqueSlug, ArticleFactory (+2 more)
+
+### Community 42 - "SubmissionController.php"
+Cohesion: 0.16
+Nodes (4): SiteSettingController, RegisteredUserController, {closure#3}(), SiteSetting
+
+### Community 43 - "ManuscriptWorkflowTest.php"
+Cohesion: 0.29
+Nodes (9): {closure#1}(), {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}(), {closure#6}(), {closure#7}(), {closure#8}() (+1 more)
+
+### Community 44 - "ContentImportValidator.php"
 Cohesion: 0.21
-Nodes (3): SiteSettingController, RegisteredUserController, SubmissionController
+Nodes (3): SafeLink, {closure#2}(), ContentImportValidator
 
 ### Community 45 - "Closure"
 Cohesion: 0.08
 Nodes (9): CountVisits, EnsureUserHasRole, SecurityHeaders, {closure#1}(), VisitCounter, CountryFlag, {closure#1}(), {closure#2}() (+1 more)
 
 ### Community 46 - "HomeBlock"
-Cohesion: 0.20
-Nodes (3): HomeBlockController, HomeBlockRequest, HomeBlock
-
-### Community 48 - "Illuminate\Database\Eloquent\Relations\HasMany"
 Cohesion: 0.17
-Nodes (3): {closure#1}(), {closure#2}(), ManuscriptAuthor
+Nodes (7): HomeBlockController, HomeBlock, {closure#1}(), {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}()
 
 ### Community 49 - "Illuminate\Support\Facades\Schema"
 Cohesion: 0.15
 Nodes (3): {closure#1}(), {closure#1}(), {closure#1}()
 
-### Community 50 - "PageEditor"
-Cohesion: 0.24
-Nodes (4): {closure#1}(), {closure#2}(), {closure#3}(), PageEditor
-
-### Community 51 - "App\Models\User"
-Cohesion: 0.12
-Nodes (4): {closure#3}(), {closure#1}(), {closure#1}(), UserRole
-
 ### Community 56 - "SidebarSection.php"
-Cohesion: 0.20
-Nodes (3): {closure#1}(), {closure#2}(), SafeMarkdown
-
-### Community 58 - "MenuItemRequest"
-Cohesion: 0.29
-Nodes (3): {closure#1}(), {closure#2}(), MenuItemRequest
+Cohesion: 0.18
+Nodes (4): {closure#1}(), {closure#2}(), {closure#2}(), SafeMarkdown
 
 ### Community 59 - "Illuminate\Contracts\Validation\Validator"
-Cohesion: 0.23
-Nodes (4): {closure#3}(), {closure#4}(), {closure#5}(), {closure#1}()
+Cohesion: 0.18
+Nodes (6): {closure#3}(), {closure#4}(), {closure#5}(), {closure#1}(), {closure#2}(), {closure#1}()
 
 ### Community 61 - "ReviewerController.php"
 Cohesion: 0.29
@@ -348,12 +355,8 @@ Cohesion: 0.22
 Nodes (9): scripts, dev, post-autoload-dump, post-create-project-cmd, post-root-package-install, post-update-cmd, pre-package-uninstall, setup (+1 more)
 
 ### Community 68 - "App\Http\Controllers\Admin\ContentController"
-Cohesion: 0.15
-Nodes (3): AnnouncementController, ContentController, NotificationController
-
-### Community 69 - "ContentExporter.php"
-Cohesion: 0.27
-Nodes (6): {closure#1}(), {closure#2}(), {closure#3}(), {closure#4}(), {closure#5}(), ContentExporter
+Cohesion: 0.13
+Nodes (5): ContentController, UserController, NotificationController, ProfileController, ContentExporter
 
 ### Community 70 - "config"
 Cohesion: 0.29
@@ -380,16 +383,12 @@ Cohesion: 0.40
 Nodes (5): require, laravel/framework, laravel/tinker, openspout/openspout, php
 
 ### Community 88 - "Role"
-Cohesion: 0.18
-Nodes (5): Role, Admin, Author, Editor, Reviewer
+Cohesion: 0.12
+Nodes (6): Role, Admin, Author, Editor, Reviewer, {closure#2}()
 
 ### Community 89 - "Laravel Application"
 Cohesion: 0.50
 Nodes (3): Agent Setup, Laravel Application, Prerequisites
-
-### Community 90 - "Tests\TestCase"
-Cohesion: 0.09
-Nodes (4): BreadcrumbTest, HeaderAccountTest, MobileHeaderTest, StagingAndPresentationTest
 
 ### Community 91 - "Laravel Application"
 Cohesion: 0.50
@@ -412,28 +411,28 @@ Cohesion: 0.67
 Nodes (3): extra, laravel, dont-discover
 
 ### Community 388 - "ManuscriptDocument"
-Cohesion: 0.14
-Nodes (4): ProfileUpdateRequest, StoreManuscriptRequest, ManuscriptDocument, NoControlCharacters
+Cohesion: 0.20
+Nodes (4): ManuscriptDocument, NoControlCharacters, PageSlug, ReservedSlugs
 
 ## Knowledge Gaps
-- **77 isolated node(s):** `admin.partials-tabs`, `site.partials.menu-item`, `site.partials.account-controls`, `admin.partials-tabs`, `editor.partials.tabs` (+72 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 713 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **77 isolated node(s):** `admin.partials-tabs`, `editor.partials.tabs`, `editor.partials.tabs`, `manuscripts.table`, `manuscripts.files` (+72 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 712 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **278 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `User` connect `User` to `TestCase`, `Illuminate\Database\Seeder`, `ContentImporter`, `ManuscriptDocument`, `Manuscript`, `ProfileTabsAndBellTest`, `Illuminate\View\View`, `EmailVerificationTest.php`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `Media`, `PagesAndRevisionsTest`, `ReviewAssignment`, `Illuminate\Database\Eloquent\Relations\BelongsTo`, `AnnouncementsAndContentTest`, `web.php`, `Page`, `Article`, `MediaLibraryTest`, `ManuscriptFile`, `Illuminate\Http\RedirectResponse`, `Illuminate\Database\Eloquent\Relations\HasMany`, `PageEditor`, `App\Models\User`, `AdminAndReportsTest.php`, `ManuscriptWorkflowTest`, `MenuAndHomeTest.php`, `Role`, `SidebarEditorTest.php`, `RegistrationFormTest`?**
-  _High betweenness centrality (0.098) - this node is a cross-community bridge._
-- **What connects `admin.partials-tabs`, `site.partials.menu-item`, `site.partials.account-controls` to the rest of the system?**
+- **Why does `User` connect `User` to `TestCase`, `MenuAndHomeTest.php`, `ContentImporter`, `Illuminate\Http\RedirectResponse`, `ProfileTabsAndBellTest`, `ReviewStatus`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `App\Services\ArticlePublisher`, `Media`, `PagesAndRevisionsTest`, `ReviewAssignment`, `AnnouncementsAndContentTest`, `Page`, `MediaLibraryTest`, `Issue`, `ManuscriptWorkflowTest.php`, `Illuminate\Foundation\Http\FormRequest`, `EditorController.php`, `AdminAndReportsTest.php`, `ManuscriptWorkflowTest`, `App\Http\Controllers\Admin\ContentController`, `Role`, `console.php`?**
+  _High betweenness centrality (0.097) - this node is a cross-community bridge._
+- **What connects `admin.partials-tabs`, `editor.partials.tabs`, `editor.partials.tabs` to the rest of the system?**
   _77 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `TestCase` be split into smaller, more focused modules?**
-  _Cohesion score 0.08739495798319327 - nodes in this community are weakly interconnected._
-- **Why does `TestCase` connect `TestCase` to `StatusBadgeTest`, `ProfileTabsAndBellTest`, `EmailVerificationTest.php`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `User`, `PagesAndRevisionsTest`, `ReviewAssignment`, `Risiko dan penanganannya`, `AnnouncementsAndContentTest`, `MediaLibraryTest`, `SecurityFoundationTest`, `AuditFixesTest.php`, `PublicSiteTest`, `AdminAndReportsTest.php`, `ManuscriptWorkflowTest`, `MenuAndHomeTest.php`, `VisitorStatsTest`, `Tests\TestCase`, `SidebarEditorTest.php`, `RegistrationFormTest`, `PublicSiteTest.php`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
-- **Should `ReportBuilder` be split into smaller, more focused modules?**
-  _Cohesion score 0.11553030303030302 - nodes in this community are weakly interconnected._
-- **Why does `Role` connect `Role` to `TestCase`, `Illuminate\Database\Seeder`, `Illuminate\Database\Eloquent\Model`, `Manuscript`, `ProfileTabsAndBellTest`, `PublicSubmissionTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `User`, `PagesAndRevisionsTest`, `ReviewAssignment`, `Risiko dan penanganannya`, `AnnouncementsAndContentTest`, `web.php`, `MediaLibraryTest`, `SecurityFoundationTest`, `ManuscriptStatus`, `ManuscriptFile`, `Closure`, `App\Models\User`, `AdminAndReportsTest.php`, `ManuscriptWorkflowTest`, `MenuAndHomeTest.php`, `Tests\TestCase`, `SidebarEditorTest.php`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+  _Cohesion score 0.06359189378057302 - nodes in this community are weakly interconnected._
+- **Why does `TestCase` connect `TestCase` to `StatusBadgeTest`, `MenuAndHomeTest.php`, `ProfileTabsAndBellTest`, `PublicSubmissionTest.php`, `MenuAndHomeTest`, `AdminAndReportsTest`, `PagesAndRevisionsTest`, `Risiko dan penanganannya`, `AnnouncementsAndContentTest`, `MediaLibraryTest`, `SecurityFoundationTest`, `AuditFixesTest.php`, `ManuscriptWorkflowTest.php`, `PublicSiteTest`, `AdminAndReportsTest.php`, `ManuscriptWorkflowTest`, `VisitorStatsTest`, `Tests\TestCase`, `RegistrationFormTest`?**
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
+- **Should `MenuAndHomeTest.php` be split into smaller, more focused modules?**
+  _Cohesion score 0.05919661733615222 - nodes in this community are weakly interconnected._
+- **Why does `PublicSubmissionTest` connect `PublicSubmissionTest` to `TestCase`, `PublicSubmissionTest.php`, `ProfileTabsAndBellTest`, `EditorController.php`, `Tests\TestCase`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Should `Illuminate\Http\RedirectResponse` be split into smaller, more focused modules?**
-  _Cohesion score 0.08095238095238096 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07315233785822021 - nodes in this community are weakly interconnected._

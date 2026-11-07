@@ -42,7 +42,7 @@ class SubmissionController extends Controller
             'institution_address' => ['required', 'string', 'max:500'],
             'abstract' => ['required', 'string', 'max:5000'],
             'keywords' => ['required', 'string', 'max:500'],
-            'file' => ['required', 'file', 'max:20480', new ManuscriptDocument],
+            'file' => ['required', 'file', 'max:20480', new ManuscriptDocument(['docx'])],
         ]);
 
         $file = $request->file('file');

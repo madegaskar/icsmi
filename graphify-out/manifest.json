@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Editorial/ArticleController.php": {
-    "mtime": 1793967711.8341372,
-    "seen": 1793991677.433679,
-    "ast_hash": "dcd76cb2d525341bf14b99ae1fd8f531",
+    "mtime": 1794028675.8094769,
+    "seen": 1794028690.528887,
+    "ast_hash": "b6e75285307416a4a8a326365524c72f",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Editorial/IssueController.php": {
@@ -204,9 +204,9 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Site/SubmissionController.php": {
-    "mtime": 1793734665.0,
-    "seen": 1793991677.43369,
-    "ast_hash": "3794419d8ec1556e1effe85425c045a1",
+    "mtime": 1794028675.8100064,
+    "seen": 1794028690.5289001,
+    "ast_hash": "452a112a0b4c69e577714088ca2e3b24",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Workflow/AuthorManuscriptController.php": {
@@ -216,9 +216,9 @@
     "semantic_hash": ""
   },
   "app/Http/Controllers/Workflow/EditorController.php": {
-    "mtime": 1793718958.0,
-    "seen": 1793991677.433692,
-    "ast_hash": "cc7a3763ee533c82214346e2a75cc2f5",
+    "mtime": 1794028675.809791,
+    "seen": 1794028690.528903,
+    "ast_hash": "6ccafaed8fce5d4cd3261d5aeacada15",
     "semantic_hash": ""
   },
   "app/Http/Controllers/Workflow/ManuscriptFileController.php": {
@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   "app/Rules/ManuscriptDocument.php": {
-    "mtime": 1793718958.0,
-    "seen": 1793991677.4337358,
-    "ast_hash": "84526eafbec660449f2ffbb6c7899810",
+    "mtime": 1794028675.8093665,
+    "seen": 1794028690.528954,
+    "ast_hash": "6945faf34de8cfb0ac36c70b4f5a6a1a",
     "semantic_hash": ""
   },
   "app/Rules/NoControlCharacters.php": {
@@ -1572,9 +1572,9 @@
     "semantic_hash": ""
   },
   "resources/views/site/submission/create.blade.php": {
-    "mtime": 1793734665.0,
-    "seen": 1793991677.43392,
-    "ast_hash": "d29dac5bbde51869147645f7d478c4e9",
+    "mtime": 1794028675.8103087,
+    "seen": 1794028690.5291772,
+    "ast_hash": "2917229d560f1f7f1c30897725185a63",
     "semantic_hash": ""
   },
   "routes/auth.php": {
@@ -1716,9 +1716,9 @@
     "semantic_hash": ""
   },
   "tests/Feature/PublicSubmissionTest.php": {
-    "mtime": 1793734707.0,
-    "seen": 1793991677.4341161,
-    "ast_hash": "abfde7c39e6bb67cb5261272d1d651a3",
+    "mtime": 1794028675.8092647,
+    "seen": 1794028690.5292091,
+    "ast_hash": "075fb0dec64a10ffd2a6f5d8011c80a0",
     "semantic_hash": ""
   },
   "tests/Feature/RegistrationFormTest.php": {

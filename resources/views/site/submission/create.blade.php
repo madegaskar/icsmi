@@ -42,8 +42,8 @@
                 <x-field name="keywords" label="Keyword" required />
 
                 <div>
-                    <x-input-label for="file" value="Choose File (PDF or DOCX, max 20 MB)" />
-                    <input id="file" name="file" type="file" accept=".pdf,.docx" required class="mt-1 block w-full text-sm text-gray-700">
+                    <x-input-label for="file" value="Choose File (DOCX only, max 20 MB)" />
+                    <input id="file" name="file" type="file" accept=".docx" required class="mt-1 block w-full text-sm text-gray-700">
                     <p class="mt-1 text-xs text-gray-500">Reviewers receive this file. Remove author names, affiliations, and acknowledgements from the text and from the document properties.</p>
                     <x-input-error class="mt-2" :messages="$errors->get('file')" />
                 </div>
