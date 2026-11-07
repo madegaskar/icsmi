@@ -1212,9 +1212,9 @@
     "semantic_hash": ""
   },
   "resources/views/components/public-layout.blade.php": {
-    "mtime": 1793961160.2434242,
-    "seen": 1793991677.43386,
-    "ast_hash": "1728815b64c2e820ce6f42ae17808516",
+    "mtime": 1794026825.249343,
+    "seen": 1794027159.932684,
+    "ast_hash": "f49ee0d7bd8a0ab15da7c27c43824c6b",
     "semantic_hash": ""
   },
   "resources/views/components/status-badge.blade.php": {
@@ -1815,6 +1815,30 @@
     "mtime": 1793998661.6736817,
     "seen": 1793998714.654639,
     "ast_hash": "e01eca9a27e734de3897362a8093c44f",
+    "semantic_hash": ""
+  },
+  "app/Support/Breadcrumbs.php": {
+    "mtime": 1794026825.2011735,
+    "seen": 1794027159.932555,
+    "ast_hash": "6a1d8cbfeaef0d9298128e5236968631",
+    "semantic_hash": ""
+  },
+  "resources/views/site/partials/breadcrumb.blade.php": {
+    "mtime": 1794026825.2049265,
+    "seen": 1794027159.9327419,
+    "ast_hash": "d98d41d9db45051530001fe330a677c2",
+    "semantic_hash": ""
+  },
+  "tests/Feature/BreadcrumbTest.php": {
+    "mtime": 1794026865.9738967,
+    "seen": 1794027159.9327738,
+    "ast_hash": "ecd0597f21936df73fae341d5306b5c1",
+    "semantic_hash": ""
+  },
+  "tests/Unit/BreadcrumbsTest.php": {
+    "mtime": 1794027093.5637953,
+    "seen": 1794027159.932798,
+    "ast_hash": "429eea9cc54dce38ff50c38e4eb33d1b",
     "semantic_hash": ""
   },
   "package-lock.json": {

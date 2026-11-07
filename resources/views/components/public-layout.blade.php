@@ -1,5 +1,9 @@
 @props(['title' => null, 'description' => null])
 
+@php
+    $crumbs = \App\Support\Breadcrumbs::for(request(), $title);
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -23,6 +27,8 @@
             {{-- Every public page shares the same two columns: the page on the left, the sidebar on the right. --}}
             <div class="mx-auto grid max-w-6xl lg:grid-cols-[minmax(0,1fr)_18rem]">
                 <div class="min-w-0">
+                    @include('site.partials.breadcrumb')
+
                     {{ $slot }}
                 </div>
 
