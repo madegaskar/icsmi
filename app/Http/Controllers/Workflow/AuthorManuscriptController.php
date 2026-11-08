@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Workflow;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreManuscriptRequest;
+use App\Enums\ManuscriptStatus;
 use App\Models\Manuscript;
 use App\Rules\ManuscriptDocument;
 use App\Services\ManuscriptWorkflow;
@@ -14,10 +15,39 @@ use Illuminate\View\View;
 
 class AuthorManuscriptController extends Controller
 {
+    /** @var list<ManuscriptStatus> */
+    private const ARCHIVED_STATUSES = [ManuscriptStatus::Accepted, ManuscriptStatus::Rejected, ManuscriptStatus::Published];
+
     public function index(Request $request): View
     {
+        $validated = $request->validate([
+            'tab' => ['nullable', 'in:queue,archive'],
+            'q' => ['nullable', 'string', 'max:200'],
+        ]);
+
+        $tab = $validated['tab'] ?? 'queue';
+        $search = trim((string) ($validated['q'] ?? ''));
+        $ownerId = $request->user()->id;
+
+        $manuscripts = Manuscript::query()
+            ->where('submitter_id', $ownerId)
+            ->when($tab === 'archive', fn ($query) => $query->whereIn('status', self::ARCHIVED_STATUSES))
+            ->when($tab === 'queue', fn ($query) => $query->whereNotIn('status', self::ARCHIVED_STATUSES))
+            ->when($search !== '', fn ($query) => $query->where(function ($inner) use ($search) {
+                $like = '%'.addcslashes($search, '%_!').'%';
+                $inner->whereRaw("title LIKE ? ESCAPE '!'", [$like])
+                    ->orWhereRaw("code LIKE ? ESCAPE '!'", [$like]);
+            }))
+            ->latest('submitted_at')
+            ->paginate(20)
+            ->withQueryString();
+
         return view('author.index', [
-            'manuscripts' => Manuscript::where('submitter_id', $request->user()->id)->latest('submitted_at')->paginate(20),
+            'manuscripts' => $manuscripts,
+            'tab' => $tab,
+            'search' => $search,
+            'queueCount' => Manuscript::where('submitter_id', $ownerId)->whereNotIn('status', self::ARCHIVED_STATUSES)->count(),
+            'archiveCount' => Manuscript::where('submitter_id', $ownerId)->whereIn('status', self::ARCHIVED_STATUSES)->count(),
         ]);
     }
 
