@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\HomeBlockController;
 use App\Http\Controllers\Admin\MenuItemController;
 use App\Http\Controllers\Admin\SidebarSectionController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\SeoSettingController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Editorial\ArticleController as EditorialArticleController;
@@ -79,6 +80,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('menu', MenuItemController::class)->except('show')->parameters(['menu' => 'menuItem']);
         Route::get('settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SiteSettingController::class, 'update'])->name('settings.update');
+        Route::get('seo', [SeoSettingController::class, 'edit'])->name('seo.edit');
+        Route::put('seo', [SeoSettingController::class, 'update'])->name('seo.update');
         Route::resource('home-blocks', HomeBlockController::class)->except('show')->parameters(['home-blocks' => 'homeBlock']);
         Route::resource('sidebar', SidebarSectionController::class)->except('show')->parameters(['sidebar' => 'sidebarSection']);
         Route::get('/audit-log', AuditLogController::class)->name('audit-log');

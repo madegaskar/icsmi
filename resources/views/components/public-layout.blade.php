@@ -12,8 +12,14 @@
 
         <title>{{ $title ? $title.' | ICSMI' : 'ICSMI | International Conference on Sustainable Management and Innovation' }}</title>
 
-        @if ($description)
-            <meta name="description" content="{{ $description }}">
+        @php
+            $siteDescription = \App\Models\SiteSetting::get(\App\Http\Controllers\Admin\SeoSettingController::DESCRIPTION_KEY);
+            $siteKeywords = \App\Models\SiteSetting::get(\App\Http\Controllers\Admin\SeoSettingController::KEYWORDS_KEY);
+            $metaDescription = $description ?: ($siteDescription ?: 'International Conference on Sustainable Management and Innovation: proceedings, call for papers, and author information.');
+        @endphp
+        <meta name="description" content="{{ $metaDescription }}">
+        @if ($siteKeywords)
+            <meta name="keywords" content="{{ $siteKeywords }}">
         @endif
 
         {{ $head ?? '' }}

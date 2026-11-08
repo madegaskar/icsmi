@@ -1,4 +1,12 @@
 <x-public-layout :title="$issue->title" :description="strip_tags(\App\Support\SafeMarkdown::render($issue->description))">
+    <x-slot:head>
+        {{ \App\Support\JsonLd::script([
+            '@type' => 'PublicationIssue',
+            'name' => $issue->title,
+            'datePublished' => $issue->year ? (string) $issue->year : null,
+            'url' => route('proceedings.show', $issue->slug),
+        ]) }}
+    </x-slot:head>
     <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <h1 class="text-3xl font-bold">{{ $issue->title }}</h1>
 

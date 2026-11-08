@@ -10,6 +10,15 @@
         <meta name="citation_publication_date" content="{{ $article->published_at->format('Y/m/d') }}">
         <meta name="citation_conference_title" content="{{ $article->issue->title }}">
         <meta name="citation_abstract_html_url" content="{{ route('articles.show', $article->slug) }}">
+        {{ \App\Support\JsonLd::script([
+            '@type' => 'ScholarlyArticle',
+            'headline' => $article->title,
+            'author' => $article->authors->map(fn ($author) => ['@type' => 'Person', 'name' => $author->name])->values()->all(),
+            'datePublished' => $article->published_at->toDateString(),
+            'isPartOf' => ['@type' => 'PublicationIssue', 'name' => $article->issue->title],
+            'identifier' => $article->doi,
+            'url' => route('articles.show', $article->slug),
+        ]) }}
         @if ($article->pdf_path)
             <meta name="citation_pdf_url" content="{{ route('articles.pdf', $article->slug) }}">
         @endif

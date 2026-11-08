@@ -1,4 +1,4 @@
-<x-public-layout description="International Conference on Sustainable Management and Innovation: proceedings, call for papers, and author information.">
+<x-public-layout>
     @foreach ($blocks as $block)
         @include('site.blocks.'.$block->type, ['block' => $block])
     @endforeach
