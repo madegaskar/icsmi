@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <p class="text-sm text-gray-500">{{ $manuscript->code }} · Version {{ $manuscript->current_version }}</p>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $manuscript->title }}</h2>
-        <p class="mt-2"><x-status-badge :label="$manuscript->status->label()" /></p>
+        <x-workflow-header
+            back-href="{{ route('editor.dashboard') }}"
+            back-label="Back to Manuscripts"
+            :code="$manuscript->code"
+            :title="$manuscript->title"
+            :status-label="$manuscript->status->label()"
+            :meta="'Version '.$manuscript->current_version" />
     </x-slot>
 
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
