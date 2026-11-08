@@ -1,4 +1,4 @@
-@props(['backHref', 'backLabel', 'code', 'title', 'statusLabel', 'meta' => null])
+@props(['backHref', 'backLabel', 'code', 'title', 'statusLabel', 'meta' => null, 'authors' => null])
 
 <div data-workflow-header class="space-y-2">
     <nav aria-label="Workflow navigation" class="text-sm">
@@ -6,6 +6,10 @@
     </nav>
     <p class="text-sm text-gray-500">
         <span>{{ $code }}</span>
+        @if ($authors)
+            <span aria-hidden="true" class="mx-1 text-gray-400">/</span>
+            <span>{{ $authors }}</span>
+        @endif
         <span aria-hidden="true" class="mx-1 text-gray-400">/</span>
         <span>{{ $title }}</span>
     </p>
