@@ -25,7 +25,7 @@
                     @if ($block->mobileMedia)
                         <source media="(max-width: 1023px)" srcset="{{ route('media.show', [$block->mobileMedia, 'mobile']) }}">
                     @endif
-                    <img data-hero-image src="{{ route('media.show', [$image, $imageVariant]) }}" alt="{{ $image->alt_text }}" class="h-full w-full object-cover">
+                    <img data-hero-image src="{{ route('media.show', [$image, $imageVariant]) }}" alt="{{ $image->alt_text }}" width="{{ $image->width }}" height="{{ $image->height }}" fetchpriority="high" class="h-full w-full object-cover">
                 </picture>
 
                 {{-- Gradient in front of the photo: from the hero colour at the text side, fading out toward the photo. --}}
