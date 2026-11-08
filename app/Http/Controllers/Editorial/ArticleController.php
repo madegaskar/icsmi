@@ -13,6 +13,7 @@ use App\Support\UniqueSlug;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
@@ -58,6 +59,7 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article, ArticlePublisher $publisher): RedirectResponse
     {
         $data = $this->validated($request, $article);
+        $previousPdf = $article->pdf_path;
 
         DB::transaction(function () use ($request, $article, $data, $publisher) {
             $attributes = $this->attributes($data, $request, $article);
@@ -69,6 +71,10 @@ class ArticleController extends Controller
             $article->update($attributes);
             $this->syncRelations($article, $data, $publisher);
         });
+
+        if ($previousPdf && $previousPdf !== $article->pdf_path) {
+            Storage::disk('local')->delete($previousPdf);
+        }
 
         AuditLog::record('article.updated', $request->user()->id, ['article_id' => $article->id]);
 

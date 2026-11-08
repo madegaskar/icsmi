@@ -11,9 +11,9 @@ use Illuminate\Contracts\Validation\ValidationRule;
  */
 class SafeLink implements ValidationRule
 {
-    private const INTERNAL_PATH = '@^/(?!/)[A-Za-z0-9/._?=&%#-]*$@';
+    private const INTERNAL_PATH = '@^/(?!/)[A-Za-z0-9/._?=&%#-]*\z@';
 
-    private const EXTERNAL_LINK = '@^(https://|mailto:)[^\s<>"\'\\\\]+$@';
+    private const EXTERNAL_LINK = '@^(https://|mailto:)[^\s<>"\'\\\\]+\z@';
 
     public static function accepts(string $value): bool
     {

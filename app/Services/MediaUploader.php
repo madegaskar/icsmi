@@ -76,6 +76,10 @@ final class MediaUploader
         $bytes = file_get_contents($file->getRealPath());
         $dimensions = getimagesizefromstring($bytes);
 
+        if ($dimensions === false || $dimensions[0] * $dimensions[1] > config('media.max_image_pixels')) {
+            throw ValidationException::withMessages(['file' => 'The image dimensions are too large or unreadable.']);
+        }
+
         $variants = [];
 
         foreach (config('media.variant_widths') as $variant => $maxWidth) {

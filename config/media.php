@@ -18,6 +18,7 @@ return [
     'directory' => 'media',
 
     'max_image_bytes' => 5 * 1024 * 1024,
+    'max_image_pixels' => 24_000_000,
 
     'max_pdf_bytes' => 20 * 1024 * 1024,
 
