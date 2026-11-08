@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Enums\ReviewStatus;
+use App\Enums\Role;
 use App\Models\ManuscriptFile;
 use App\Models\ReviewAssignment;
 use App\Models\User;
@@ -17,6 +18,7 @@ class ManuscriptFilePolicy
         }
 
         return $file->kind === ManuscriptFile::KIND_BLINDED
+            && $user->hasRole(Role::Reviewer)
             && ReviewAssignment::query()
                 ->where('manuscript_id', $file->manuscript_id)
                 ->where('reviewer_id', $user->id)

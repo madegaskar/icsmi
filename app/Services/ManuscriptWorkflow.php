@@ -110,7 +110,14 @@ class ManuscriptWorkflow
     public function submitRevision(Manuscript $manuscript, User $author, UploadedFile $blinded, ?UploadedFile $full, ?string $note): void
     {
         DB::transaction(function () use ($manuscript, $author, $blinded, $full) {
-            $manuscript->update(['current_version' => $manuscript->current_version + 1]);
+            $locked = Manuscript::query()->lockForUpdate()->findOrFail($manuscript->id);
+
+            if ($locked->status !== ManuscriptStatus::RevisionRequired) {
+                throw ValidationException::withMessages(['status' => 'This manuscript is not awaiting a revision.']);
+            }
+
+            $locked->update(['current_version' => $locked->current_version + 1]);
+            $manuscript->refresh();
 
             $this->storeVersion($manuscript, $author, $blinded, $full);
         });
