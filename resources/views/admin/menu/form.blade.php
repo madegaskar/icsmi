@@ -55,7 +55,7 @@
                 <div>
                     <x-input-label for="media_id" value="File (only if the link type is File from the library)" />
                     <select id="media_id" name="media_id" class="{{ $selectClass }}">
-                        <option value="">—</option>
+                        <option value="">(none)</option>
                         @foreach ($mediaOptions as $media)
                             <option value="{{ $media->id }}" @selected((string) old('media_id', $item->media_id) === (string) $media->id)>{{ $media->original_name }}</option>
                         @endforeach
@@ -66,7 +66,7 @@
                 <div>
                     <x-input-label for="parent_id" value="Submenu of (leave empty for a top-level item)" />
                     <select id="parent_id" name="parent_id" class="{{ $selectClass }}">
-                        <option value="">—</option>
+                        <option value="">(none)</option>
                         @foreach ($parents as $parent)
                             <option value="{{ $parent->id }}" @selected((string) old('parent_id', $item->parent_id) === (string) $parent->id)>{{ ucfirst($parent->location) }}: {{ $parent->label }}</option>
                         @endforeach

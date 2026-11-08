@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td class="px-4 py-3 text-gray-600">{{ $item->isImage() ? $item->width.' × '.$item->height.' px' : 'PDF' }}</td>
-                    <td class="px-4 py-3 text-gray-600">{{ $item->alt_text ?? '—' }}</td>
+                    <td class="px-4 py-3 text-gray-600">{{ $item->alt_text ?? '(none)' }}</td>
                     <td class="px-4 py-3 text-gray-600">{{ $item->uploader?->name ?? 'Deleted user' }}</td>
                     <td class="space-x-3 px-4 py-3 text-right text-xs">
                         <a class="text-gray-600 underline hover:text-gray-900" href="{{ route('library.edit', $item) }}">Edit</a>

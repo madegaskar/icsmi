@@ -17,7 +17,7 @@
                 <tr>
                     <td class="px-4 py-3 text-gray-600">{{ $block->sort_order }}</td>
                     <td class="px-4 py-3 font-medium">{{ ucfirst($block->type) }}</td>
-                    <td class="px-4 py-3">{{ $block->heading ?? '—' }}</td>
+                    <td class="px-4 py-3">{{ $block->heading ?? '(none)' }}</td>
                     <td class="px-4 py-3 text-xs text-gray-600">
                         {{ $block->starts_at ? 'From '.$block->starts_at->format('j M Y H:i') : 'Always' }}
                         @if ($block->ends_at) <br>Until {{ $block->ends_at->format('j M Y H:i') }} @endif

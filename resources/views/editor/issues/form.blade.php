@@ -37,7 +37,7 @@
                     <div class="mt-3">
                         <x-input-label for="cover_media_id" value="Or pick an existing image from the library" />
                         <select id="cover_media_id" name="cover_media_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            <option value="">—</option>
+                            <option value="">(none)</option>
                             @foreach ($images as $image)
                                 <option value="{{ $image->id }}" @selected((string) old('cover_media_id', $issue->cover_media_id) === (string) $image->id)>{{ $image->original_name }}</option>
                             @endforeach

@@ -85,7 +85,7 @@
                     <div>
                         <x-input-label for="desktop_media_id" value="Desktop image (hero, 1920 × 800 px recommended)" />
                         <select id="desktop_media_id" name="desktop_media_id" class="{{ $selectClass }}">
-                            <option value="">—</option>
+                            <option value="">(none)</option>
                             @foreach ($images as $image)
                                 <option value="{{ $image->id }}" @selected((string) old('desktop_media_id', $block->desktop_media_id) === (string) $image->id)>{{ $image->original_name }}</option>
                             @endforeach
@@ -95,7 +95,7 @@
                     <div>
                         <x-input-label for="mobile_media_id" value="Phone image (hero, 750 × 900 px recommended)" />
                         <select id="mobile_media_id" name="mobile_media_id" class="{{ $selectClass }}">
-                            <option value="">—</option>
+                            <option value="">(none)</option>
                             @foreach ($images as $image)
                                 <option value="{{ $image->id }}" @selected((string) old('mobile_media_id', $block->mobile_media_id) === (string) $image->id)>{{ $image->original_name }}</option>
                             @endforeach
@@ -127,7 +127,7 @@
                     <div class="mt-3">
                         <x-input-label for="cover_media_id" value="Or pick an existing image from the library" />
                         <select id="cover_media_id" name="cover_media_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            <option value="">—</option>
+                            <option value="">(none)</option>
                             @foreach ($images as $image)
                                 <option value="{{ $image->id }}" @selected((string) old('cover_media_id', $block->cover_media_id) === (string) $image->id)>{{ $image->original_name }}</option>
                             @endforeach
