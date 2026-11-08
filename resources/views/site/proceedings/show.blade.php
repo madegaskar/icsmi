@@ -1,4 +1,4 @@
-<x-public-layout :title="$issue->title" :description="$issue->description">
+<x-public-layout :title="$issue->title" :description="strip_tags(\App\Support\SafeMarkdown::render($issue->description))">
     <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <h1 class="text-3xl font-bold">{{ $issue->title }}</h1>
 
@@ -12,7 +12,7 @@
         </dl>
 
         @if ($issue->description)
-            <p class="mt-6 max-w-2xl whitespace-pre-line leading-relaxed text-gray-700">{{ $issue->description }}</p>
+            <div class="content mt-6 max-w-2xl leading-relaxed text-gray-700">{{ \App\Support\SafeMarkdown::render($issue->description) }}</div>
         @endif
 
         <h2 class="mt-10 text-xl font-semibold">Articles</h2>
