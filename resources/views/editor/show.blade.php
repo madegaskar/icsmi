@@ -1,18 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-workflow-header
-            back-href="{{ route('editor.dashboard') }}"
-            back-label="Back to Manuscripts"
-            :code="$manuscript->code"
-            :title="$manuscript->title"
-            :status-label="$manuscript->status->label()"
-            :meta="'Version '.$manuscript->current_version" />
+        <p class="text-sm text-gray-500">{{ $manuscript->code }} · Version {{ $manuscript->current_version }}</p>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $manuscript->title }}</h2>
+        <p class="mt-2"><x-status-badge :label="$manuscript->status->label()" /></p>
     </x-slot>
 
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
-
-        <x-workflow-sections :sections="[['id' => 'reviews', 'label' => 'Reviews'], ['id' => 'details', 'label' => 'Details'], ['id' => 'files', 'label' => 'Files'], ['id' => 'history', 'label' => 'History']]" />
 
         @if ($transitions !== [])
             <x-card title="Change Status">
@@ -81,7 +75,7 @@
             </x-card>
         @endif
 
-        <x-card id="reviews" title="Reviews">
+        <x-card title="Reviews">
             <x-input-error class="mt-2" :messages="$errors->get('assignment')" />
 
             <ul class="mt-3 divide-y divide-gray-100 text-sm">
@@ -138,7 +132,7 @@
             @endif
         </x-card>
 
-        <x-card id="details" title="Details">
+        <x-card title="Details">
             @include('manuscripts.summary')
 
             @if ($manuscript->publicSubmission)
@@ -154,11 +148,11 @@
             </ul>
         </x-card>
 
-        <x-card id="files" title="Files">
+        <x-card title="Files">
             @include('manuscripts.files', ['files' => $manuscript->files])
         </x-card>
 
-        <x-card id="history" title="History">
+        <x-card title="History">
             <ul class="mt-3 space-y-3 text-sm">
                 @foreach ($manuscript->histories as $history)
                     <li>

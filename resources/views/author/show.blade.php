@@ -1,18 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-workflow-header
-            back-href="{{ route('author.dashboard') }}"
-            back-label="Back to My Manuscripts"
-            :code="$manuscript->code"
-            :authors="$manuscript->authors->pluck('name')->implode(', ')"
-            :title="$manuscript->title"
-            :status-label="$manuscript->status->label()" />
+        <p class="text-sm text-gray-500">{{ $manuscript->code }}</p>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $manuscript->title }}</h2>
+        <p class="mt-2"><x-status-badge :label="$manuscript->status->label()" /></p>
     </x-slot>
 
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
-
-        <x-workflow-sections :sections="[['id' => 'details', 'label' => 'Details'], ['id' => 'files', 'label' => 'Files'], ['id' => 'history', 'label' => 'History']]" />
 
         @can('revise', $manuscript)
             <x-card title="Submit Revision">
@@ -44,7 +38,7 @@
             </x-card>
         @endif
 
-        <x-card id="details" title="Details">
+        <x-card title="Details">
             @include('manuscripts.summary')
 
             <h4 class="mt-5 text-sm font-medium text-gray-700">Authors</h4>
@@ -55,32 +49,11 @@
             </ul>
         </x-card>
 
-        <x-card id="files" title="Files">
-            <table class="mt-3 min-w-full text-left text-sm" data-files-table>
-                <thead class="text-xs uppercase tracking-wide text-gray-500">
-                    <tr>
-                        <th scope="col" class="py-2 pe-4 font-medium">Name</th>
-                        <th scope="col" class="py-2 pe-4 font-medium">Date</th>
-                        <th scope="col" class="py-2 font-medium">Component</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100">
-                    @forelse ($manuscript->files as $file)
-                        <tr>
-                            <td class="py-2 pe-4">
-                                <a class="font-medium text-emerald-800 hover:underline" href="{{ route('manuscript-files.download', $file) }}">{{ $file->original_name }}</a>
-                            </td>
-                            <td class="whitespace-nowrap py-2 pe-4 text-gray-600">{{ $file->created_at->format('j M Y') }}</td>
-                            <td class="py-2 text-gray-700">v{{ $file->version }} · {{ ucfirst($file->kind) }}</td>
-                        </tr>
-                    @empty
-                        <tr><td colspan="3" class="py-2 text-gray-600">No files.</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
+        <x-card title="Files">
+            @include('manuscripts.files', ['files' => $manuscript->files])
         </x-card>
 
-        <x-card id="history" title="History">
+        <x-card title="History">
             <ul class="mt-3 space-y-3 text-sm">
                 @foreach ($manuscript->histories as $history)
                     <li>

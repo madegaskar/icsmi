@@ -1,18 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-workflow-header
-            back-href="{{ route('reviewer.dashboard') }}"
-            back-label="Back to Review Assignments"
-            :code="$manuscript->code"
-            :title="$manuscript->title"
-            :status-label="$assignment->status->label()"
-            :meta="'Round '.$assignment->round.' · Due '.$assignment->due_at->format('j F Y')" />
+        <p class="text-sm text-gray-500">{{ $manuscript->code }} · Round {{ $assignment->round }}</p>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $manuscript->title }}</h2>
+        <p class="mt-2"><x-status-badge :label="$assignment->status->label()" /> <span class="ms-2 text-sm text-gray-500">Due {{ $assignment->due_at->format('j F Y') }}</span></p>
     </x-slot>
 
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
 
-        <x-card id="manuscript" title="Manuscript">
+        <x-card title="Manuscript">
             @include('manuscripts.summary')
 
             @can('download', $file)
@@ -31,7 +27,7 @@
         @endcan
 
         @can('submit', $assignment)
-            <x-card id="submit-review" title="Submit Review">
+            <x-card title="Submit Review">
                 <form method="POST" action="{{ route('reviewer.assignments.submit', $assignment) }}">
                     @csrf
 
