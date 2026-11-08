@@ -12,6 +12,8 @@
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
 
+        <x-workflow-sections :sections="[['id' => 'reviews', 'label' => 'Reviews'], ['id' => 'details', 'label' => 'Details'], ['id' => 'files', 'label' => 'Files'], ['id' => 'history', 'label' => 'History']]" />
+
         @if ($transitions !== [])
             <x-card title="Change Status">
                 <form method="POST" action="{{ route('editor.manuscripts.status', $manuscript) }}">
@@ -79,7 +81,7 @@
             </x-card>
         @endif
 
-        <x-card title="Reviews">
+        <x-card id="reviews" title="Reviews">
             <x-input-error class="mt-2" :messages="$errors->get('assignment')" />
 
             <ul class="mt-3 divide-y divide-gray-100 text-sm">
@@ -136,7 +138,7 @@
             @endif
         </x-card>
 
-        <x-card title="Details">
+        <x-card id="details" title="Details">
             @include('manuscripts.summary')
 
             @if ($manuscript->publicSubmission)
@@ -152,11 +154,11 @@
             </ul>
         </x-card>
 
-        <x-card title="Files">
+        <x-card id="files" title="Files">
             @include('manuscripts.files', ['files' => $manuscript->files])
         </x-card>
 
-        <x-card title="History">
+        <x-card id="history" title="History">
             <ul class="mt-3 space-y-3 text-sm">
                 @foreach ($manuscript->histories as $history)
                     <li>

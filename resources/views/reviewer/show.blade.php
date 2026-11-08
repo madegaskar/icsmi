@@ -12,7 +12,7 @@
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
 
-        <x-card title="Manuscript">
+        <x-card id="manuscript" title="Manuscript">
             @include('manuscripts.summary')
 
             @can('download', $file)
@@ -31,7 +31,7 @@
         @endcan
 
         @can('submit', $assignment)
-            <x-card title="Submit Review">
+            <x-card id="submit-review" title="Submit Review">
                 <form method="POST" action="{{ route('reviewer.assignments.submit', $assignment) }}">
                     @csrf
 

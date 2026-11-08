@@ -11,6 +11,8 @@
     <div class="mx-auto max-w-4xl space-y-6 py-8 sm:px-6 lg:px-8">
         <x-flash-status />
 
+        <x-workflow-sections :sections="[['id' => 'details', 'label' => 'Details'], ['id' => 'files', 'label' => 'Files'], ['id' => 'history', 'label' => 'History']]" />
+
         @can('revise', $manuscript)
             <x-card title="Submit Revision">
                 <form method="POST" action="{{ route('author.manuscripts.revise', $manuscript) }}" enctype="multipart/form-data">
@@ -41,7 +43,7 @@
             </x-card>
         @endif
 
-        <x-card title="Details">
+        <x-card id="details" title="Details">
             @include('manuscripts.summary')
 
             <h4 class="mt-5 text-sm font-medium text-gray-700">Authors</h4>
@@ -52,11 +54,11 @@
             </ul>
         </x-card>
 
-        <x-card title="Files">
+        <x-card id="files" title="Files">
             @include('manuscripts.files', ['files' => $manuscript->files])
         </x-card>
 
-        <x-card title="History">
+        <x-card id="history" title="History">
             <ul class="mt-3 space-y-3 text-sm">
                 @foreach ($manuscript->histories as $history)
                     <li>
