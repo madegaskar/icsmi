@@ -15,7 +15,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->trustHosts(subdomains: false);
+        $middleware->trustHosts(
+            subdomains: true,
+            hosts: [
+                'localhost',
+                'localhost:*',
+                'icsmi-journal-production.up.railway.app',
+                '*.up.railway.app',
+            ],
+        );
         $middleware->append(SecurityHeaders::class);
         $middleware->web(append: CountVisits::class);
         $middleware->alias(['role' => EnsureUserHasRole::class]);
