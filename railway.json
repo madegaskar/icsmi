@@ -10,6 +10,11 @@
   "deploy": {
     "startCommand": "vendor/bin/heroku-php-apache2 public/",
     "restartPolicyType": "on_failure",
-    "restartPolicyMaxRetries": 5
+    "restartPolicyMaxRetries": 5,
+    "healthchecks": {
+      "enabled": true,
+      "cpu": 200,
+      "memory": 512
+    }
   }
 }
